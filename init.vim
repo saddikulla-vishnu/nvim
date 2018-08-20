@@ -3,11 +3,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree'
 Plug 'rafi/awesome-vim-colorschemes'
+" Plug 'morhetz/gruvbox'
 Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'rking/ag.vim' " Source Coder search Plugin
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -30,6 +32,18 @@ Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim'
 Plug 'majutsushi/tagbar'
 Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/limelight.vim'
+Plug 'sheerun/vim-polyglot'
+" Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Shougo/denite.nvim'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'janko-m/vim-test'
+" Plug 'davidhalter/jedi-vim'
+" Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 call plug#end()
 
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -89,6 +103,8 @@ set ignorecase
 set smartcase
 " turn off search highlight
 nnoremap <LEADER><ESC> :nohlsearch<CR>
+nnoremap <silent> <leader>s :set spell!<CR>
+set spelllang=en
 set ruler
 set path+=.,,**
 " set lazyredraw          " redraw only when we need to.
@@ -154,6 +170,7 @@ nnoremap <C-b>   :bnext<CR>
 nnoremap <LEADER>l <C-l>
 " Toggle NerdTree
 nnoremap <LEADER>n :NERDTreeToggle<CR>
+nnoremap <LEADER>u :UndotreeToggle<CR>
 " Window Split Switching
 nnoremap <C-i> <C-o>
 nnoremap <C-o> <C-i>
@@ -247,3 +264,69 @@ let g:ale_lint_on_text_changed = 'never'
 " nerdcommenter settings
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
+
+
+" Denite Settings
+
+
+
+" Vim-easymotion Settings
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+" s{char}{char} to move to {char}{char}
+" nmap s <Plug>(easymotion-overwin-f2)
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+" " Move to word
+" map  <Leader>w <Plug>(easymotion-bd-w)
+" nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+
+
+" incsearch Settings
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+" :h g:incsearch#auto_nohlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+
+
+" incsearch-fuzzy.vim Settings
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
+function! s:config_fuzzyall(...) abort
+  return extend(copy({
+  \   'converters': [
+  \     incsearch#config#fuzzy#converter(),
+  \     incsearch#config#fuzzyspell#converter()
+  \   ],
+  \ }), get(a:, 1, {}))
+endfunction
+noremap <silent><expr> z/ incsearch#go(<SID>config_fuzzyall())
+noremap <silent><expr> z? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
+noremap <silent><expr> zg? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
+
+
+
+" incsearch-easymotion Settings
+" incsearch.vim x fuzzy x vim-easymotion
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzy#converter()],
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
