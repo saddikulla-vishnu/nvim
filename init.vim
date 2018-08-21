@@ -1,6 +1,5 @@
 call plug#begin()
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 " Plug 'tpope/vim-sensible'
@@ -141,13 +140,13 @@ set foldlevelstart=10 " open most folds by default
 set foldminlines=10
 set foldnestmax=10 " 10 nested folds max
 set foldmethod=indent
-nnoremap <space> za
+nnoremap <space> :
 
 
 
 " inoremap jj <ESC>
 " open ag.vim
-nnoremap <leader>ag :Ag<space>
+nnoremap <leader>ag :Ag<Return>
 nnoremap <leader>f :find<space>
 
 set undofile
@@ -231,6 +230,7 @@ let g:formatter_yapf_style = 'pep8'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_fixers = {'python': ['isort']}
 nnoremap <silent><C-k> :ALEPreviousWrap<CR>
 nnoremap <silent><C-j> :ALENextWrap<CR>
 " Write this in your vimrc file
