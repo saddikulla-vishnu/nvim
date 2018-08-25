@@ -41,6 +41,9 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'janko-m/vim-test'
+"" Vim-Session
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 " Plug 'davidhalter/jedi-vim'
 " Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 call plug#end()
@@ -109,7 +112,8 @@ set path+=.,,**
 " set lazyredraw          " redraw only when we need to.
 nnoremap <LEADER>gd :YcmCompleter GoTo<CR>
 nnoremap <LEADER>gr :YcmCompleter GoToReferences<CR>
-nnoremap <LEADER>t :terminal<CR>
+" nnoremap <LEADER>t :terminal<CR>
+nnoremap <silent> <leader>sh :terminal<CR>
 nnoremap <silent> \ ,
 nnoremap Y y$
 
@@ -131,9 +135,9 @@ set list
 set dictionary+=/usr/share/dict/words
 nnoremap <leader>ct :checktime<CR>
 " check one time after 4s of inactivity in normal mode
-" set autoread
+set autoread
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 " au CursorHold * checktime 
-
 
 set foldenable
 set foldlevelstart=10 " open most folds by default
@@ -155,6 +159,15 @@ set backup
 set backupdir=~/.vim/backup/
 set writebackup
 set directory=~/.vim/swap/
+set title
+" set titleold="Terminal"
+" set titlestring=%F
+"" Copy/Paste/Cut
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
+" nnoremap n nzzzv
+" nnoremap N Nzzzv
 " move vertically by visual line
 " nnoremap j gj
 nnoremap j gj
@@ -176,7 +189,7 @@ nnoremap <C-o> <C-i>
 vnoremap < <gv
 vnoremap > >gv
 
-tnoremap <ESC><ESC> <C-\><C-n>
+tnoremap <ESC> <C-\><C-n>
 
 
 
@@ -330,3 +343,14 @@ function! s:config_easyfuzzymotion(...) abort
   \ }), get(a:, 1, {}))
 endfunction
 noremap <silent><expr> <leader>/ incsearch#go(<SID>config_easyfuzzymotion())
+
+
+" session management Settings
+let g:session_directory = "~/.config/nvim/session"
+let g:session_autoload = "no"
+let g:session_autosave = "no"
+let g:session_command_aliases = 1
+nnoremap <leader>so :OpenSession<Space>
+nnoremap <leader>ss :SaveSession<Space>
+nnoremap <leader>sd :DeleteSession<CR>
+nnoremap <leader>sc :CloseSession<CR>
