@@ -163,9 +163,9 @@ set title
 " set titleold="Terminal"
 " set titlestring=%F
 "" Copy/Paste/Cut
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
+" if has('unnamedplus')
+  " set clipboard=unnamed,unnamedplus
+" endif
 " nnoremap n nzzzv
 " nnoremap N Nzzzv
 " move vertically by visual line
