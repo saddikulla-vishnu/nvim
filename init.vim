@@ -8,6 +8,7 @@ Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree'
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'altercation/vim-colors-solarized'
 " Plug 'morhetz/gruvbox'
 Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'rking/ag.vim' " Source Coder search Plugin
@@ -41,6 +42,10 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'janko-m/vim-test'
+Plug 'RRethy/vim-illuminate'
+Plug 'inside/vim-search-pulse'
+" Plug 'terryma/vim-smooth-scroll'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 "" Vim-Session
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
@@ -97,8 +102,9 @@ set cursorline
 set whichwrap+=<,>,h,l
 " colorscheme slate
 set background=dark
-" colorscheme iceberg
 colorscheme OceanicNext
+" colorscheme solarized
+" colorscheme iceberg
 "colorscheme afterglow
 set previewheight=10
 set ignorecase
@@ -354,3 +360,13 @@ nnoremap <leader>so :OpenSession<Space>
 nnoremap <leader>ss :SaveSession<Space>
 nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
+
+" " vim-smooth-scroll Settings
+" noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+" noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+" noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+" noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+
+" vim-search-pulse Settings
+let g:vim_search_pulse_duration = 200
