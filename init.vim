@@ -43,7 +43,7 @@ Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'janko-m/vim-test'
 Plug 'RRethy/vim-illuminate'
-Plug 'inside/vim-search-pulse'
+" Plug 'inside/vim-search-pulse'
 " Plug 'terryma/vim-smooth-scroll'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 "" Vim-Session
@@ -369,4 +369,4 @@ nnoremap <leader>sc :CloseSession<CR>
 
 
 " vim-search-pulse Settings
-let g:vim_search_pulse_duration = 200
+" let g:vim_search_pulse_duration = 200
