@@ -51,6 +51,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 " Plug 'davidhalter/jedi-vim'
 " Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+Plug 'saddikulla-vishnu/jupyter-vim'
 call plug#end()
 
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -136,8 +137,8 @@ set tabstop=4
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-set listchars=tab:\|\
 set list
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
 set dictionary+=/usr/share/dict/words
 nnoremap <leader>ct :checktime<CR>
 " check one time after 4s of inactivity in normal mode
