@@ -51,7 +51,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 " Plug 'davidhalter/jedi-vim'
 " Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-Plug 'saddikulla-vishnu/jupyter-vim'
+Plug 'wmvanvliet/jupyter-vim'
 call plug#end()
 
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -371,3 +371,4 @@ nnoremap <leader>sc :CloseSession<CR>
 
 " vim-search-pulse Settings
 " let g:vim_search_pulse_duration = 200
+let g:pymode_python = 'python3'
