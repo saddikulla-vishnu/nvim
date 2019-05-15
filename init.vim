@@ -371,4 +371,3 @@ nnoremap <leader>sc :CloseSession<CR>
 
 " vim-search-pulse Settings
 " let g:vim_search_pulse_duration = 200
-let g:pymode_python = 'python3'
