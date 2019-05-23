@@ -140,6 +140,7 @@ set wrap "Wrap lines
 set list
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
 set dictionary+=/usr/share/dict/words
+set complete+=k " For Dictionary completions
 nnoremap <leader>ct :checktime<CR>
 " check one time after 4s of inactivity in normal mode
 set autoread
@@ -371,3 +372,6 @@ nnoremap <leader>sc :CloseSession<CR>
 
 " vim-search-pulse Settings
 " let g:vim_search_pulse_duration = 200
+
+" Dictionary completions for .txt file-extension
+au FileType * execute 'setlocal dict+=~/.vim/words/'.&filetype.'.txt'
