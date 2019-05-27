@@ -254,6 +254,13 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_fixers = {'python': ['isort']}
 nnoremap <silent><C-k> :ALEPreviousWrap<CR>
 nnoremap <silent><C-j> :ALENextWrap<CR>
+" count nr of occurrences of word under cursor
+nnoremap <leader>* :%s/\<<c-r><c-w>\>//gn<cr>
+" count nr of occurrences of visual selection
+vnoremap <leader>* :<c-u>%s/<c-r>*//gn<cr>
+" count nr of occurrences of last searched word
+nnoremap <leader>nr :%s///gn<cr>``
+
 " Write this in your vimrc file
 let g:ale_lint_on_text_changed = 'never'
 " You can disable this option too
