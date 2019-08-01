@@ -2,6 +2,7 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
 " Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
@@ -382,3 +383,11 @@ nnoremap <leader>sc :CloseSession<CR>
 
 " Dictionary completions for .txt file-extension
 au FileType * execute 'setlocal dict+=~/.vim/words/'.&filetype.'.txt'
+
+" vim-unimpaired Settings
+" nmap < [
+" nmap > ]
+" omap < [
+" omap > ]
+" xmap < [
+" xmap > ]
