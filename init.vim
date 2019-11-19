@@ -17,7 +17,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --tern-completer' }
 Plug 'rdnetto/YCM-Generator'
 "F3 Plug 'roxma/nvim-completion-manager'
 Plug 'yggdroot/indentline'
@@ -53,6 +53,7 @@ Plug 'xolox/vim-session'
 " Plug 'davidhalter/jedi-vim'
 " Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'wmvanvliet/jupyter-vim'
+Plug 'psliwka/vim-smoothie'
 call plug#end()
 
 let g:SuperTabDefaultCompletionType = '<C-n>'
