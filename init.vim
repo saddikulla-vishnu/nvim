@@ -18,7 +18,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --tern-completer' }
-Plug 'rdnetto/YCM-Generator'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 "F3 Plug 'roxma/nvim-completion-manager'
 Plug 'yggdroot/indentline'
 Plug 'mbbill/undotree'
@@ -26,7 +26,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Chiel92/vim-autoformat'
 " Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale' " Asynchronous Linting Engine
-Plug 'wincent/command-t'
+" Plug 'wincent/command-t'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -216,8 +216,8 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_server_python_interpreter = '/usr/bin/python3.6' " change this according to the YcmRestartSerever Error
-let g:ycm_python_binary_path = 'python3.6'
+let g:ycm_server_python_interpreter = '/usr/bin/python3.7' " change this according to the YcmRestartSerever Error
+let g:ycm_python_binary_path = 'python3.7'
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_goto_buffer_command = 'vertical-split'
@@ -253,7 +253,8 @@ let g:formatter_yapf_style = 'pep8'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_fixers = {'python': ['isort']}
+" let g:ale_linters = {'python': ['flake8', 'pylint']}
+let g:ale_fixers = {'python': ['isort', 'autopep8', 'yapf']}
 nnoremap <silent><C-k> :ALEPreviousWrap<CR>
 nnoremap <silent><C-j> :ALENextWrap<CR>
 " count nr of occurrences of word under cursor
@@ -261,7 +262,7 @@ nnoremap <leader>* :%s/\<<c-r><c-w>\>//gn<cr>
 " count nr of occurrences of visual selection
 vnoremap <leader>* :<c-u>%s/<c-r>*//gn<cr>
 " count nr of occurrences of last searched word
-nnoremap <leader>nr :%s///gn<cr>``
+nnoremap <leader>nr :%s///gn<cr>
 
 " Write this in your vimrc file
 let g:ale_lint_on_text_changed = 'never'
@@ -272,9 +273,9 @@ let g:ale_lint_on_text_changed = 'never'
 " let g:ale_set_loclist = 0
 " let g:ale_set_quickfix = 1
 " Check Python files with flake8 and pylint.
-" let g:ale_linters = ['flake8', 'pylint']
+" let g:ale_linters = {'python': ['flake8', 'pylint']}
 " Fix Python files with autopep8 and yapf.
-" let g:ale_fixers = ['autopep8', 'yapf']
+" let g:ale_fixers = {'python': ['autopep8', 'yapf']}
 
 
 " vim-devicons settings
