@@ -8,6 +8,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree'
+" Plug 'flazz/vim-colorschemes'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'altercation/vim-colors-solarized'
 " Plug 'morhetz/gruvbox'
@@ -34,6 +35,7 @@ Plug 'mattn/emmet-vim'
 Plug 'majutsushi/tagbar'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
@@ -104,8 +106,9 @@ set cursorline
 " set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 " colorscheme slate
-set background=dark
-colorscheme OceanicNext
+" set background=dark
+" colorscheme OceanicNext
+colorscheme gruvbox
 " colorscheme solarized
 " colorscheme iceberg
 "colorscheme afterglow
@@ -161,7 +164,7 @@ nnoremap <space> :
 " inoremap jj <ESC>
 " open ag.vim
 nnoremap <leader>ag :Ag<Return>
-nnoremap <leader>f :find<space>
+" nnoremap <leader>f :find<space>
 
 set undofile
 set undodir=~/.vim/undo/
@@ -189,7 +192,7 @@ nnoremap <C-n> :tabnew<CR>
 " Buffer navigation like Firefox.
 nnoremap <C-b>   :bnext<CR>
 " Redraw vim screen
-nnoremap <LEADER>l <C-l>
+" nnoremap <LEADER>l <C-l>
 " Toggle NerdTree
 nnoremap <LEADER>n :NERDTreeToggle<CR>
 nnoremap <LEADER>u :UndotreeToggle<CR>
@@ -401,3 +404,61 @@ au FileType * execute 'setlocal dict+=~/.vim/words/'.&filetype.'.txt'
 " omap > ]
 " xmap < [
 " xmap > ]
+
+" Limelight Settings
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
+" nmap <Leader>l <Plug>(Limelight)
+" xmap <Leader>l <Plug>(Limelight)
+
+" Goyo Settings
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  " Goyo 75%x75%
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+" autocmd! User GoyoEnter Limelight
+" autocmd! User GoyoLeave Limelight!
