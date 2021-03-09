@@ -214,7 +214,13 @@ endif
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+" let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '/home/vishnu/.config/nvim/plugged/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+" Let clangd fully control code completion
+let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+let g:ycm_clangd_binary_path = exepath("clangd")
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_server_python_interpreter = '/usr/bin/python3.7' " change this according to the YcmRestartSerever Error
 let g:ycm_python_binary_path = 'python3.7'
