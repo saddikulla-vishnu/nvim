@@ -11,7 +11,11 @@ Plug 'scrooloose/nerdtree'
 " Plug 'flazz/vim-colorschemes'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'altercation/vim-colors-solarized'
-" Plug 'morhetz/gruvbox'
+" Plug 'arcticicestudio/nord-vim', { 'on':  'NERDTreeToggle' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'morhetz/gruvbox'
+" Plug 'dylanaraps/wal.vim'
+
 Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'rking/ag.vim' " Source Coder search Plugin
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -56,6 +60,11 @@ Plug 'xolox/vim-session'
 " Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'wmvanvliet/jupyter-vim'
 Plug 'psliwka/vim-smoothie'
+" Text object Plugins
+Plug 'wellle/targets.vim'
+" Plug 'kana/vim-textobj-user'
+Plug 'jeetsukumaran/vim-pythonsense'
+" Plug 'mjbrownie/django-template-textobjects'
 call plug#end()
 
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -107,8 +116,13 @@ set cursorline
 set whichwrap+=<,>,h,l
 " colorscheme slate
 " set background=dark
+" Gruvbox Settings
+let g:gruvbox_invert_selection = '0'
+" let g:gruvbox_contrast_dark = 'soft'
 " colorscheme OceanicNext
 colorscheme gruvbox
+" colorscheme dracula
+" colorscheme nord
 " colorscheme solarized
 " colorscheme iceberg
 "colorscheme afterglow
