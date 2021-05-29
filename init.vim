@@ -65,6 +65,7 @@ Plug 'wellle/targets.vim'
 " Plug 'kana/vim-textobj-user'
 Plug 'jeetsukumaran/vim-pythonsense'
 " Plug 'mjbrownie/django-template-textobjects'
+Plug 'dkarter/bullets.vim'
 call plug#end()
 
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -244,6 +245,9 @@ let g:ycm_python_binary_path = 'python3.7'
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_goto_buffer_command = 'vertical-split'
+let g:ycm_filetype_blacklist = {'notes': 1, 'markdown': 1, 'netrw': 1, 'unite': 1, 'ycm_nofiletype': 1, 'pandoc': 1, 'tagbar': 1, 'leaderf': 1, 'vimwiki': 1, 'infolog': 1, 'mail': 1}
+" let g:ycm_filetype_whitelist = {'text': 1}
+" let g:ycm_filetype_blacklist = {'notes': 1, 'markdown': 1, 'netrw': 1, 'unite': 1, 'ycm_nofiletype': 1, 'pandoc': 1, 'tagbar': 1, 'leaderf': 1, 'vimwiki': 1, 'text': 1, 'infolog': 1, 'mail': 1}
 
 
 " CtrlP settings
